@@ -12,12 +12,10 @@ function requireHTTPS(req, res, next) {
 }
 
 app.use(requireHTTPS);
-app.use(express.static("./dist/sitem-pakar-pkb"));
+app.use(express.static("./dist/sitem-pakar-pbd"));
 
 app.get("/*", (req, res) => {
-  res.sendFile("index.html", { root: "dist/sistem-pakar-pkb/" });
+  res.sendFile("index.html", { root: "dist/sistem-pakar-pbd/" });
 });
 
-app.listen(process.env.PORT || 8080, 'localhost', () => {
-	console.log('Running at')
-});
+app.listen(process.env.PORT || 8080)
