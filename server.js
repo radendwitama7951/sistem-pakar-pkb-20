@@ -3,6 +3,7 @@ const path = require("path");
 
 const app = express();
 
+/*
 function requireHTTPS(req, res, next) {
   // The 'x-forwarded-proto' check is for Heroku
   if (!req.secure && req.get("x-forwarded-proto") !== "https") {
@@ -12,10 +13,13 @@ function requireHTTPS(req, res, next) {
 }
 
 app.use(requireHTTPS);
-app.use(express.static("./dist/sitem-pakar-pbd"));
+*/
+
+
+app.use(express.static("./dist/sistem-pakar-pbd"));
 
 app.get("/*", (req, res) => {
-  res.sendFile("index.html", { root: "dist/sistem-pakar-pbd/" });
+  res.sendFile(path.join( __dirname, "/dist/sistem-pakar-pbd/index.html"));
 });
 
 app.listen(process.env.PORT || 8080)
