@@ -1,0 +1,61 @@
+<mat-sidenav-container class="sidenav-container">
+
+  <mat-sidenav  #drawer 
+                class="sidenav" 
+                fixedInViewport
+                [attr.role]="(isDesktop$ | async) ? 'navigation' : 'dialog'"
+                [mode]="(isDesktop$ | async) ? 'side' : 'over'"
+                [opened]="(isDesktop$ | async) === true">
+    <mat-nav-list class="pt-0">
+      <div class="bg-slate-100 pt-40 pb-16 px-12">
+        <img class="mx-auto h-[100px] w-[100px] rounded-full object-cover" mat-card-avatar
+        src="https://tailwindcss.com/_next/static/media/sarah-dayan.a8ff3f1095a58085a82e3bb6aab12eb2.jpg" 
+        alt="Rounded avatar">
+        <div class="mx-auto my-2 w-fit">
+          <h3><b>Hello,</b>{{' '}}</h3><h4>User</h4>
+        </div>
+      </div>
+      <h2 matSubheader>Menu</h2>
+      <a mat-list-item #menuLink
+         *ngFor="let menu of menuOptions"
+         (click)="goToMenu(menu.path, menu.display)"
+         [routerLink]="[menu.path]"
+         [routerLinkActive]="'active'"
+         >
+         <mat-icon mat-list-icon>{{ menu.icon }}</mat-icon>
+          {{ menu.display }}
+      </a>
+      <mat-divider></mat-divider>
+      <h2 matSubheader>Extras</h2> 
+      <a mat-list-item #menuLink
+         *ngFor="let extras of extrasOptions"
+         (click)="goToMenu(extras.path, extras.display)"
+         [routerLink]="[extras.path]"
+         [routerLinkActiveOptions]="{ exact: true }"
+         [routerLinkActive]="'active'"
+         >
+         <mat-icon mat-list-icon>{{ extras.icon }}</mat-icon>
+          {{ extras.display }}
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  
+  <mat-sidenav-content>
+    <app-header [headerTitle]="activeMenu"
+      class="fixed w-full h-max z-[999]"
+      (toggleSidenav)="toggleSidenav($event)"> 
+    </app-header>
+
+    <!-- Add Content Here -->
+    <section
+      class="2xl:px-48 mat-typography"
+      [ngClass]="{ 'px-[150px]': (!drawer.opened && (isDesktop$ | async)), 'mx-8': true, 'my-[84px]': true }"
+    >
+      <router-outlet></router-outlet>
+    </section>
+
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

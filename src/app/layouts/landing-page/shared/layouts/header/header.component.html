@@ -1,0 +1,107 @@
+
+<ng-container *ngIf="(isHandset$ | async) then mobileNav; else desktopNav">
+</ng-container>
+
+<ng-template #mobileNav>
+  <mat-toolbar class="fixed bg-pink-600 top-0 z-50">
+
+    <button
+      class="text-slate-200" 
+      type="button"
+      aria-label="Toggle sidenav"
+      mat-icon-button
+      (click)="drawer.toggle()"
+    >
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+
+    <span
+           class="text-slate-200"
+    >
+    {{ appName }}
+    </span>
+
+  </mat-toolbar>
+
+  <mat-sidenav-container class="w-full">
+    <mat-nav-list c>
+      <mat-sidenav  #drawer 
+                    class="w-full mt-14" 
+                    fixedInViewport
+                    attr.role="dialog"
+                    mode="over"
+                    opened="false">
+        
+        <a mat-list-item #menuLink
+           [disableRipple]="true"
+           class="text-pink-600 px-[40%]"
+           *ngFor="let menu of menuOptions"
+           [routerLink]="[menu.path]"
+           [routerLinkActive]="'active'"
+           (click)="drawer.toggle()"
+           >
+           <mat-icon mat-list-icon>{{ menu.icon }}</mat-icon>
+            {{ menu.display }}
+        </a>
+      </mat-sidenav>
+    </mat-nav-list>
+  </mat-sidenav-container> 
+</ng-template>
+
+
+<ng-template #desktopNav>
+  <mat-toolbar class="fixed transition-colors top-0 z-50"
+               [ngClass]="(scrolledDown()) ? 
+               'bg-pink-600' : 'bg-transparent'"
+               >
+
+    <span
+           [ngClass]="(scrolledDown()) ? 
+           'text-slate-200' : 'text-pink-600'"
+    >
+    {{ appName }}
+    </span>
+    <span class="flex-1"></span>
+    <span >
+      <button *ngFor="let menu of menuOptions"
+                [routerLink]="[menu.path]"
+                routerLinkActive="active"
+               [ngClass]="(scrolledDown()) ? 
+               'text-slate-200' : 'text-pink-600'"
+                mat-button
+      >
+      {{ menu.display }}
+
+      </button>
+
+
+    </span>
+
+    <input  matInput
+            type="text"
+            class="mx-4 
+                    px-2
+                    py-1.5
+                    border
+                    block
+                    text-sm
+                    border-transparent 
+                    focus:border-blue-500
+                    focus:ring-0
+                    placeholder:text-sm placeholder:pb-2"
+
+            placeholder="SEARCH"
+
+           [ngClass]="(scrolledDown()) ? 
+           'mat-elevation-z1 rounded-full' : 'border-b-pink-400'"
+    >
+
+    
+    <span>
+      <button mat-icon-button>
+        <mat-icon>notify</mat-icon>
+      </button>
+    </span>
+    <mat-icon>github</mat-icon>
+  </mat-toolbar>
+</ng-template>

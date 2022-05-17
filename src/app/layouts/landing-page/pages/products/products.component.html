@@ -1,0 +1,41 @@
+<h1>Aplikasi</h1>
+<section class="grid grid-cols-2 gap-4
+                md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
+  <ng-container *ngFor="let product of products">
+    <div class="mat-elevation-z4 
+         max-h-[400px]"
+    >
+      <div 
+        (click)="goToProduct(product.path)"
+        class="bg-black relative hover:cursor-pointer">
+        <img
+          class="
+            h-[180px] w-full
+            hover:opacity-80 ease-in duration-300 object-cover"
+          [src]="product.picture"
+          alt="">
+      </div>
+      <div class="p-2">
+        <h3 class="m-0"><b>{{ product.display }}</b></h3>
+        <button
+          color="accent"
+          (click)="goToProduct(product.path)"
+          mat-stroked-button>Go To App</button>
+        <button
+          color="accent"
+          (click)="product.isFavorited = !product.isFavorited"
+          mat-icon-button>
+          <mat-icon>
+            {{ product.isFavorited ? 'favorite' : 'favorite_outline' }}
+          </mat-icon>
+        </button>
+        <button
+          color="accent"
+          mat-icon-button>
+          <mat-icon>share</mat-icon>
+        </button>
+        
+      </div>
+    </div>
+  </ng-container>
+</section>
