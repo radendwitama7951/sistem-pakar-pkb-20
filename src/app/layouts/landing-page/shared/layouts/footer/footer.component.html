@@ -1,0 +1,24 @@
+<footer class="
+        mt-8
+        w-full 
+        min-h-[300px] 
+        bg-slate-200">
+  <mat-toolbar class="bg-slate-100">
+    <span >
+      <button *ngFor="let menu of menuOptions"
+                [routerLink]="[menu.path]"
+                routerLinkActive="bg-[rgba(0,0,0,.1)]"
+                mat-button
+      >
+      {{ menu.display }}
+
+      </button>
+    </span>
+    <span class="flex-[1_1_100%]"></span>
+    <span>
+      <a [routerLink]="['', 'home']">
+        {{ appName }}
+      </a>
+    </span>
+  </mat-toolbar>
+</footer>

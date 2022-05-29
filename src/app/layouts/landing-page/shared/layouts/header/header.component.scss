@@ -6,3 +6,10 @@
   background-color: rgba(69,69,69, .1)
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+

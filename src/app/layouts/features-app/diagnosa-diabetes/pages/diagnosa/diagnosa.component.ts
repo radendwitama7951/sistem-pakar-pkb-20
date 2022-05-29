@@ -1,6 +1,8 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { map, Observable, pluck } from 'rxjs';
 
 @Component({
   selector: 'app-diagnosa',
@@ -17,15 +19,33 @@ export class DiagnosaComponent implements OnInit {
   public userForm!: FormGroup;
   public mahasiswaForm!: FormGroup;
   public userHealthDataForm!: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  public isHandset$!: Observable<boolean>;
+  constructor(
+    private fb: FormBuilder,
+    private breakpointObserver: BreakpointObserver
+  ) {}
 
   ngOnInit(): void {
+    this.setIsHandset();
+    this.setUserForm();
+    this.setMahasiswaForm();
+  }
+
+  private setIsHandset(): void {
+    this.isHandset$ = this.breakpointObserver
+      .observe([Breakpoints.HandsetPortrait, Breakpoints.Small])
+      .pipe(pluck('matches'));
+  }
+
+  private setUserForm(): void {
     this.userForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       first_name: ['', [Validators.required, Validators.maxLength(64)]],
       last_name: ['', [Validators.required, Validators.maxLength(64)]],
     });
+  }
 
+  private setMahasiswaForm(): void {
     this.mahasiswaForm = this.fb.group({
       nim: ['', [Validators.required, Validators.maxLength(64)]],
       universitas: [

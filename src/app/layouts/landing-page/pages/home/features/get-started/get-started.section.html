@@ -1,23 +1,23 @@
-<section class="h-screen sm:h-max">
+<section class="h-screen sm:h-max" *ngIf="(getStartedData$ | async) as getStarted">
   <section class="grid grid-cols-1 sm:grid-cols-2 gap-4">
     <div class="hidden sm:block">
       <mat-card class="p-0 m-0">
         <img  class="m-0"
                mat-card-image
-              src="https://material.angular.io/assets/img/examples/shiba2.jpg" 
+              [src]="getStarted.fields.picture.fields.file.url"
               alt="image of a dog">
         <mat-card-content class="">
         </mat-card-content>
       </mat-card>
     </div>
     <div>
-      <h1 class="title">Hello World !</h1>
+      <h1 class="title">{{ getStarted.fields.judul }}</h1>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, harum quae repellendus quam illo voluptatum ad minus totam quaerat aspernatur ipsam adipisci, officiis nostrum omnis, at praesentium! Fugit, totam enim.
+        {{ getStarted.fields.deskripsi }}
       </p>
       <div class="self-end">
-          <button mat-stroked-button>Read More</button>
-          <button mat-raised-button class="btn-pink mx-2">Get Started</button>
+          <button mat-stroked-button [routerLink]="['', 'about']">Read More</button>
+          <button mat-raised-button [routerLink]="['', 'auth']" class="btn-pink mx-2">Get Started</button>
       </div>
     </div>
   </section>

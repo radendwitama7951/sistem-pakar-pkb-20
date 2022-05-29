@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { LandingPageService } from 'src/app/core/services/landing-page.service';
+import { TutorialService } from 'src/app/core/services/tutorial.service';
 
 @Component({
   selector: 'app-products',
@@ -7,20 +10,23 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  public products: any = [
-    {
-      display: 'Diagnosa Diabetes',
-      description:
-        'Aplikasi diagnosa diabetes dapat mengurangi angka kematian akibat diabetes dengan mendeteksi gejalanya sejak dini.',
-      picture: 'https://i.imgflip.com/2g3upx.jpg',
-      path: 'diagnosa-diabetes',
-      isFavorited: false,
-    },
-  ];
+  public aplikasiList$!: Observable<any>;
+  public tutorial$!: Observable<any>;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
+  constructor(
+    private router: Router,
+    private _tutorialService: TutorialService,
+    private _landingPageService: LandingPageService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.tutorial$ = this._tutorialService.entities$;
+    this.aplikasiList$ = this._landingPageService.aplikasiEntities$;
+  }
+
+  goToTutorial(id: string): void {
+    this.router.navigate(['tutorial', id]);
+  }
 
   goToProduct(path: string): void {
     this.router.navigate(['app', path]);

@@ -33,6 +33,14 @@ $sistem-pakar-pbd-theme: mat.define-light-theme((
   )
 ));
 
+$my-custom-typography-config: mat.define-typography-config(
+  $display-4: mat.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
+  $display-3: mat.define-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
+  $display-2: mat.define-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
+  $display-1: mat.define-typography-level(34px, 40px, 400),
+  $headline:  mat.define-typography-level(24px, 32px, 400),
+);
+
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
@@ -45,15 +53,30 @@ $sistem-pakar-pbd-theme: mat.define-light-theme((
 }
 
 
-html, body { height: 100%;}
+html, body { height: 100%; min-height: 100vh;}
 body { 
   margin: 0; 
   font-family: Roboto, "Helvetica Neue", sans-serif; 
-  height: 150vh;
 }
 
-input {
-  @apply appearance-none border-transparent focus:border-transparent focus:ring-0 #{!important};
+
+.bg-accent {
+  background-color: #ff4081;
+}
+.color-accent {
+  color: #ff4081;
+}
+
+.round-input {
+  @apply  mx-4
+          bg-white
+          border
+          mat-elevation-z1
+          rounded-full
+          block
+          text-sm
+          border-transparent 
+          placeholder:text-sm placeholder:pb-2
 }
 
 .center {

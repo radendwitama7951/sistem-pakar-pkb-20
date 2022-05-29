@@ -26,9 +26,15 @@ export class DiagnosaDiabetesComponent implements OnInit {
       icon: '',
     },
     {
+      display: 'Riwayat',
+      path: 'riwayat',
+      icon: '',
+    },
+    {
       display: 'Training-Machine',
       path: 'training-machine',
       icon: '',
+      disabled: true,
     },
   ];
 
@@ -45,7 +51,7 @@ export class DiagnosaDiabetesComponent implements OnInit {
     },
     {
       display: 'Exit',
-      path: '',
+      path: '../../products',
       icon: 'exit_to_app',
     },
   ];

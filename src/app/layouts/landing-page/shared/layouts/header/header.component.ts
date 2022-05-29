@@ -2,14 +2,15 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { DOCUMENT } from '@angular/common';
 import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { map, Observable, shareReplay } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-landing-page-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  public appName = 'Dokter Online';
+  public appName = environment.appName;
   public menuOptions: any = [
     {
       display: 'Home',

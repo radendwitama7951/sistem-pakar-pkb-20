@@ -1,0 +1,16 @@
+
+
+<section
+  *ngIf="(tutorialData$ | async) as tutorial"
+  class="w-full p-4 bg-white mat-typography">
+  <h1 class="mat-display-1 mb-4">{{ tutorial.fields.judul }}</h1>
+  <h4>Created at {{ tutorial.sys.createdAt | date:'short'}}</h4>
+  <div class="w-full">
+    <img 
+      class="w-full"
+      [src]="tutorial.fields.banner.fields.file.url" alt="">
+  </div>
+  <div class="mt-4" [innerHtml]="tutorial.fields.overview"></div>
+
+  <div [innerHtml]="_returnHtmlFromRichText(tutorial.fields.body)"></div>
+</section>

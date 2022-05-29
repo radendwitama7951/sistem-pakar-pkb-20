@@ -10,11 +10,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { AppUtilModule } from 'src/app/shared/utils/app-util.module';
 
 @NgModule({
   declarations: [DiagnosaDiabetesComponent],
   imports: [
     CommonModule,
+    AppUtilModule,
     DiagnosaDiabetesRoutingModule,
     LayoutModule,
     MatToolbarModule,

@@ -9,6 +9,7 @@ import { FeaturedProductsSection } from './features/featured-products/featured-p
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { LandingPageService } from 'src/app/core/services/landing-page.service';
 
 @NgModule({
   declarations: [
@@ -25,4 +26,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonModule,
   ],
 })
-export class HomeModule {}
+export class HomeModule {
+  constructor(private _landingPageService: LandingPageService) {
+    this._landingPageService.loadHomeEntities();
+  }
+}

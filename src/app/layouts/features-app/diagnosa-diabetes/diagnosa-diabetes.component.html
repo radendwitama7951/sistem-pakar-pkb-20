@@ -16,23 +16,21 @@
         </div>
       </div>
       <h2 matSubheader>Menu</h2>
-      <a mat-list-item #menuLink
+      <a mat-list-item
          *ngFor="let menu of menuOptions"
          (click)="goToMenu(menu.path, menu.display)"
          [routerLink]="[menu.path]"
          [routerLinkActive]="'active'"
+         [disabled]="menu?.disabled"
          >
          <mat-icon mat-list-icon>{{ menu.icon }}</mat-icon>
           {{ menu.display }}
       </a>
       <mat-divider></mat-divider>
       <h2 matSubheader>Extras</h2> 
-      <a mat-list-item #menuLink
+      <a mat-list-item
          *ngFor="let extras of extrasOptions"
-         (click)="goToMenu(extras.path, extras.display)"
          [routerLink]="[extras.path]"
-         [routerLinkActiveOptions]="{ exact: true }"
-         [routerLinkActive]="'active'"
          >
          <mat-icon mat-list-icon>{{ extras.icon }}</mat-icon>
           {{ extras.display }}
@@ -50,7 +48,7 @@
     <!-- Add Content Here -->
     <section
       class="2xl:px-48 mat-typography"
-      [ngClass]="{ 'px-[150px]': (!drawer.opened && (isDesktop$ | async)), 'mx-8': true, 'my-[84px]': true }"
+      [ngClass]="{ 'px-[150px]': (!drawer.opened && (isDesktop$ | async)), 'mx-0': true, 'my-[84px]': true }"
     >
       <router-outlet></router-outlet>
     </section>

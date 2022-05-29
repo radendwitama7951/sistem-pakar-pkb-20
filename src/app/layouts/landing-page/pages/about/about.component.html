@@ -1,1 +1,19 @@
-<p>about works!</p>
+
+<h1>About Us</h1>
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  <ng-container
+    *ngFor="let about of (aboutList$ | async)">
+    <div class="hidden md:block">
+      <img [src]="about.fields.sideImage.fields.file.url" 
+            [alt]="about.fields.sideImage.fields.title"
+            width="100%"
+            >
+    </div>
+    <div class="">
+      <h1>{{ about.fields.judul }}</h1>
+      <p [innerHTML]="about.fields.deskripsi"></p>
+    </div>
+  </ng-container>
+
+
+</section>

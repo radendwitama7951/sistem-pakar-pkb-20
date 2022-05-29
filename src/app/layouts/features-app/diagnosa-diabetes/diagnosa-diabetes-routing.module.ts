@@ -26,10 +26,16 @@ const routes: Routes = [
       },
       {
         path: 'training-machine',
+        canActivate: [false],
         loadChildren: () =>
           import('./pages/training-machine/training-machine.module').then(
             (m) => m.TrainingMachineModule
           ),
+      },
+      {
+        path: 'riwayat',
+        loadChildren: () =>
+          import('./pages/riwayat/riwayat.module').then((m) => m.RiwayatModule),
       },
     ],
   },
