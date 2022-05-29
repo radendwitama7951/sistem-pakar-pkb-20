@@ -1,6 +1,7 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { DOCUMENT } from '@angular/common';
 import { Component, HostListener, Inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { map, Observable, shareReplay } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -35,10 +36,15 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
+
+  public goToAccount(): void {
+    this.router.navigate(['', 'account']);
+  }
 
   @HostListener('window:scroll', [])
   scrolledDown(): boolean {

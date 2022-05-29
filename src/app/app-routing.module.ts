@@ -18,6 +18,7 @@ const routes: Routes = [
   },
   { path: 'tutorial', loadChildren: () => import('./layouts/tutorial-page/tutorial-page.module').then(m => m.TutorialPageModule) },
   { path: 'auth', loadChildren: () => import('./layouts/auth/auth.module').then(m => m.AuthModule) },
+  { path: 'account', loadChildren: () => import('./layouts/user/user.module').then(m => m.UserModule) },
 ];
 
 @NgModule({

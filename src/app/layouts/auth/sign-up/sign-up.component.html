@@ -1,1 +1,99 @@
-<p>sign-up works!</p>
+<mat-toolbar color="accent" class="rounded-t-full h-2 mt-4"></mat-toolbar>
+<div class="bg-white p-8 rounded-b">
+  <h1>Sign up</h1>
+  <form>
+    <mat-form-field 
+     class="w-full"
+      color="accent">
+      <mat-label>Email</mat-label>
+      <input  placeholder="Ex. example@email.com"
+              matInput
+      type="text">
+      <mat-error></mat-error>
+    </mat-form-field>
+
+    <mat-form-field 
+     class="w-full"
+      color="accent">
+      <mat-label>First Name</mat-label>
+      <input  placeholder="Ex. Raden Dwitama"
+              matInput
+      type="text">
+      <mat-error></mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field 
+     class="w-full"
+      color="accent">
+      <mat-label>Last Name</mat-label>
+      <input  placeholder="Ex. Baliano"
+              matInput
+      type="text">
+      <mat-error></mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field 
+     class="w-full"
+      color="accent">
+      <mat-label>Password</mat-label>
+      <input  placeholder=""
+              matInput
+      type="password">
+      <mat-error></mat-error>
+    </mat-form-field>
+
+
+  </form>
+
+  <h2 class="mt-8 mb-2">Khusus Mahasiswa Universitas Udayana</h2>
+  <form >
+    <mat-form-field 
+     class="w-full"
+      color="accent">
+      <mat-label>NIM</mat-label>
+      <input  placeholder="Ex. 2008561001"
+              matInput
+      type="text">
+      <mat-error></mat-error>
+    </mat-form-field>
+
+    <mat-form-field 
+     class="w-full"
+      color="accent">
+      <mat-label>Prodi</mat-label>
+      <input  placeholder="Ex. Informatika"
+              matInput
+      type="text">
+      <mat-error></mat-error>
+    </mat-form-field>
+
+    <mat-form-field 
+     class="w-full"
+      color="accent">
+      <mat-label>Fakultas</mat-label>
+      <input  placeholder="Ex. FMIPA"
+              matInput
+      type="text">
+      <mat-error></mat-error>
+    </mat-form-field>
+
+    <div class="flex justify-center sm:justify-end mt-8">
+      <button
+        (click)="signUp()"
+        class="w-full"
+        mat-raised-button color="accent">
+        Sign Up
+      </button>
+    </div>
+  </form>
+
+  <mat-divider class="mt-8"></mat-divider>
+  <span class="text-sky-600 my-4 flex justify-center">
+    <a [routerLink]="['','auth','sign-in']">
+      Kembali ke Sign-In
+    </a>
+  </span>
+</div>
+

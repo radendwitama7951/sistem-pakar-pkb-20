@@ -4,7 +4,7 @@
         min-h-[300px] 
         bg-slate-200">
   <mat-toolbar class="bg-slate-100">
-    <span >
+    <span class="flex flex-wrap sm:block">
       <button *ngFor="let menu of menuOptions"
                 [routerLink]="[menu.path]"
                 routerLinkActive="bg-[rgba(0,0,0,.1)]"
@@ -14,8 +14,8 @@
 
       </button>
     </span>
-    <span class="flex-[1_1_100%]"></span>
-    <span>
+    <span class="sm:flex-[1_1_100%]"></span>
+    <span class="hidden sm:block">
       <a [routerLink]="['', 'home']">
         {{ appName }}
       </a>

@@ -30,8 +30,12 @@
       </button>
     </span>
     <span>
-      <button mat-icon-button class="text-slate-200">
-        <mat-icon>contact_support</mat-icon>
+      <button 
+        (click)="goToAccount()"
+        mat-icon-button class="text-slate-200">
+        <img 
+        class="circle-avatar" 
+        src="https://lh3.googleusercontent.com/ogw/ADea4I6fzsbET1zjkpIVggfSlAtGKOsxDSJQSa7871Im=s32-c-mo" alt="user avatar">
       </button>
     </span>
 
@@ -123,10 +127,13 @@
       </button>
     </span>
     <span>
-      <button mat-icon-button 
+      <button (click)="goToAccount()"
+              mat-icon-button 
                [ngClass]="(scrolledDown()) ? 
                           'text-slate-200' : 'text-pink-600'">
-        <mat-icon>contact_support</mat-icon>
+        <img 
+        class="circle-avatar" 
+        src="https://lh3.googleusercontent.com/ogw/ADea4I6fzsbET1zjkpIVggfSlAtGKOsxDSJQSa7871Im=s32-c-mo" alt="user avatar">
       </button>
     </span>
   </mat-toolbar>

@@ -1,16 +1,18 @@
 
 <section class="min-h-screen flex flex-1">
-  <mat-card class="flex" *ngIf="(contactUsData$ | async) as contactUs">
-    <div class="flex-none w-1/3 mr-4 bg-slate-50 p-2"
+  <mat-card class="flex flex-1" *ngIf="(contactUsData$ | async) as contactUs">
+    <div class="flex-none w-1/3 mr-4 bg-slate-50 p-2 hidden sm:block"
       [style.background-image]="contactUs?.fields?.background">
       <h1 [style.color]="contactUs.fields.textColor">{{ contactUs.fields.display }}</h1>
       <p [style.color]="contactUs.fields.textColor">{{ contactUs.fields.deskripsi }}</p>
     </div>
+
     <div class="flex-1 w-full">
+      <h1 class="sm:hidden">{{ contactUs.fields.display }}</h1>
       <form>
-        <div class="col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div class="">
-              <mat-form-field color="accent"class="w-full">
+              <mat-form-field color="accent" class="w-full">
                 <mat-label>First Name</mat-label>
                 <input 
                   placeholder="Ex. Raden Dwitama"
@@ -59,7 +61,7 @@
             </mat-form-field>
           </div>
 
-          <div class="col-start-2 mt-16">
+          <div class="sm:col-start-2 mt-16">
             <button mat-raised-button 
               class="block w-full" color="accent">Submit</button>
           </div>

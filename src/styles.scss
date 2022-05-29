@@ -67,6 +67,20 @@ body {
   color: #ff4081;
 }
 
+.auth-input {
+  @apply 
+      bg-gray-200 
+      appearance-none 
+      rounded 
+      w-full py-2 px-4 
+      text-gray-700 
+      leading-tight 
+      shadow-[inset_0_2px_4px_0_rgba(0,0,0,0.2)]
+      focus:outline-none 
+      focus:border-[#ff4081]
+      #{!important}
+}
+
 .round-input {
   @apply  mx-4
           bg-white
@@ -77,13 +91,20 @@ body {
           text-sm
           border-transparent 
           placeholder:text-sm placeholder:pb-2
+          #{!important}
+
 }
+
 
 .center {
   @apply top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] #{!important}
 }
 
 @layer components {
+
+  .circle-avatar {
+    @apply inline-block h-6 w-6 rounded-full ring-2 ring-white #{!important}
+  }
 
   .btn-pink {
     @apply bg-pink-500 text-white #{!important};
