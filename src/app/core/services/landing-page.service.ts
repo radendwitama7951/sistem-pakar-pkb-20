@@ -73,6 +73,7 @@ export class LandingPageService {
         Object.assign(
           {
             content_type: 'about',
+            order: 'sys.createdAt',
           },
           {}
         )
